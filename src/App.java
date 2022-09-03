@@ -97,7 +97,7 @@ public class App {
         if (pref % 2 == 0) {
             seatId = bus + "" + (char) ((rawSeat % 4 == 0 ? rawSeat / 4 : (rawSeat / 4) + 1) + 64) + "" + (rawSeat%4==0?4:rawSeat%4);
         } else {
-            seatId =bus + "" + (char)((rawSeat%6==0?rawSeat/6:(rawSeat/6)+1)+((rawSeat%6==3||rawSeat%6==4||rawSeat%6==0)?64:96))+""+((rawSeat%6==1 || rawSeat%6==3)?1:(rawSeat%6==2 || rawSeat%6==4)?2:3);
+            seatId =bus + "" + (char)((rawSeat%6==0?rawSeat/6:(rawSeat/6)+1)+64)+""+((rawSeat%6==1 || rawSeat%6==3)?1:(rawSeat%6==2 || rawSeat%6==4)?2:3)+""+((rawSeat%6==3||rawSeat%6==4||rawSeat%6==0)?"U":"L");
         }
         return seatId;
     }
