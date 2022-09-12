@@ -824,7 +824,7 @@ public class App {
                         do {
                             System.out.println("Do you wish to continue? (y/n)");
                             String temp = sc.nextLine();
-                            if (temp.equalsIgnoreCase("y") || temp.equalsIgnoreCase("m")) {
+                            if (temp.equalsIgnoreCase("y") || temp.equalsIgnoreCase("n")) {
                                 confirmation = temp;
                             } else {
                                 printError("Enter a valid option");
@@ -857,7 +857,7 @@ public class App {
                             ticketupdate.setInt(3, ticketsBooked.get(ticketChoice));
                             ticketupdate.setDouble(2, (double) (fare.getInt(2) * cancelSeats.size()) * (fare.getInt(1) < 2 ? 0.5 : 0.25));
                             ticketupdate.executeUpdate();
-                            printSuccess("Seats Cancelled are : " + cancelSeats.toString());
+                            printSuccess("Seats Cancelled are : " + ticketsToCancel.toString());
                         } else if (confirmation.equalsIgnoreCase("n")) {
                             printSorrow("You made a right choice ");
                         }
@@ -873,7 +873,6 @@ public class App {
                         fare.next();
                         String confirmation = null;
                         do {
-
                             System.out.println("Amount refunded : "
                                     + (double) (fare.getInt(2) * seatCount.get(ticketChoice))
                                             * (fare.getInt(1) < 2 ? 0.5 : 0.75));
@@ -1337,7 +1336,6 @@ public class App {
             } catch (Exception e) {
             }
             sc.nextLine();
-            clear();
             switch (totalChoice) {
                 case 1:
                     boolean loginSignUp = false;
@@ -1352,14 +1350,12 @@ public class App {
                         } catch (Exception e) {
                         }
                         sc.nextLine();
-                        clear();
                         switch (onBoardChoice) {
                             case 1:
                                 validateUser();
                                 if (currentUserId != -1) {
                                     boolean userPanelExit = false;
                                     while (!userPanelExit) {
-                                        
                                         System.out.println("1-Book Tickets");
                                         System.out.println("2-Cancel Tickets");
                                         System.out.println("3-View Tickets");
@@ -1373,7 +1369,6 @@ public class App {
                                         } catch (Exception e) {
                                         }
                                         sc.nextLine();
-                                        clear();
                                         switch (userChoice) {
                                             case 1:
                                                 bookTickets();
@@ -1432,7 +1427,6 @@ public class App {
                             } catch (Exception e) {
                             }
                             sc.nextLine();
-                            clear();
                             switch (adminChoice) {
                                 case 1:
                                     createBus();
@@ -1483,8 +1477,5 @@ public class App {
     public static void printSorrow(String s) {
         System.out.println("\u001B[34m" + s + "\u001B[0m");
     }
-    public static void clear() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
+    
 }
